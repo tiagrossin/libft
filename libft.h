@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sarosa-b <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sarosa-b <sarosa-b@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 18:01:40 by sarosa-b          #+#    #+#             */
-/*   Updated: 2024/10/24 21:42:19 by sarosa-b         ###   ########.fr       */
+/*   Created: 2025/02/01 12:03:35 by sarosa-b          #+#    #+#             */
+/*   Updated: 2025/02/01 12:06:31 by sarosa-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 # define LIBFT_H
 
 # include <stdlib.h>
+# include <fcntl.h> 
 # include <unistd.h>
 # include <limits.h>
-# include <stdio.h> //solo para las pruebas manuales de main
+# include <stdarg.h>  // Para ft_printf
+# include <stdio.h>   // Solo para pruebas manuales de main
 
+/**************************************
+ *           Funciones de libft       *
+ **************************************/
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -52,5 +57,29 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+/**************************************
+ *       Funciones de get_next_line   *
+ **************************************/
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42  // Tamaño del buffer para GNL
+# endif
+
+char	*get_next_line(int fd);
+char	*ft_strjoin_free(char *s1, char *s2);
+
+/**************************************
+ *       Funciones de ft_printf       *
+ **************************************/
+# define UPP_HEX_BASE "0123456789ABCDEF"
+# define HEX_BASE "0123456789abcdef"
+
+int		ft_printf(const char *format, ...);
+int		ft_putchar_pf(char c, int *char_count);
+int		ft_putstr_pf(char *str, int *char_count);
+int		ft_putnbr_pf(int nbr, int *char_count);
+int		ft_unsigned_int_pf(unsigned int u, int *char_count);
+int		ft_pointer_pf(size_t ptr, int *char_count);
+int		ft_hexadecimal_pf(unsigned int nbr, int *char_count, char x_type);
 
 #endif
